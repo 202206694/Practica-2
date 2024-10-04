@@ -18,9 +18,10 @@
         // Notifica una alerta a todos los coches de policía
         public void Alerta(string infractorPlate)
         {
-            Console.WriteLine($"Alerta: vehicule eith plate {infractorPlate} went over the leagl speed limit.");
+            Console.WriteLine($"Alerta: vehículo con matrícula {infractorPlate} ha excedido el límite de velocidad legal.");
             foreach (var policeCar in policeCars)
             {
+                // Se verifica si el coche está patrullando antes de que comience la persecución
                 if (policeCar.IsPatrolling())
                 {
                     policeCar.PerseguirVehiculo(infractorPlate);

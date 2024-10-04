@@ -3,37 +3,16 @@
     class PoliceCar : Vehicle
     {
         private const string typeOfVehicle = "Police Car";
-        private bool isPatrolling;
-        private SpeedRadar speedRadar;
+        private bool isPatrolling;  // Esta variable indica si el coche está patrullando
+        private SpeedRadar? speedRadar;  // Radar opcional (puede ser nulo)
         private bool isPursuing;
-        private string pursuingVehiclePlate;
+        private string? pursuingVehiclePlate;
 
-        public PoliceCar(string plate) : base(typeOfVehicle, plate)
+        public PoliceCar(string plate, SpeedRadar? radar = null) : base(typeOfVehicle, plate)
         {
             isPatrolling = false;
-            speedRadar = new SpeedRadar();
+            speedRadar = radar;
             isPursuing = false;
-            pursuingVehiclePlate = null;
-        }
-
-        public void UseRadar(Vehicle vehicle, Comisaria comisaria)
-        {
-            if (isPatrolling)
-            {
-                speedRadar.TriggerRadar(vehicle);
-                string measurement = speedRadar.GetLastReading();
-                Console.WriteLine(WriteMessage($"Triggered radar. Result: {measurement}"));
-
-                // Si se detecta velocidad ilegal, notifica a la comisaría
-                if (vehicle.GetSpeed() > 50.0f)
-                {
-                    comisaria.Alerta(vehicle.GetPlate());
-                }
-            }
-            else
-            {
-                Console.WriteLine(WriteMessage($"has no active radar."));
-            }
         }
 
         public void StartPatrolling()
@@ -42,10 +21,6 @@
             {
                 isPatrolling = true;
                 Console.WriteLine(WriteMessage("started patrolling."));
-            }
-            else
-            {
-                Console.WriteLine(WriteMessage("is already patrolling."));
             }
         }
 
@@ -56,13 +31,39 @@
                 isPatrolling = false;
                 Console.WriteLine(WriteMessage("stopped patrolling."));
             }
+        }
+
+        // Este método devuelve si el coche está patrullando o no
+        public bool IsPatrolling()
+        {
+            return isPatrolling;
+        }
+
+        public void UseRadar(Vehicle vehicle, Comisaria comisaria)
+        {
+            if (speedRadar == null)
+            {
+                Console.WriteLine(WriteMessage("has no radar installed."));
+                return;
+            }
+
+            if (isPatrolling)
+            {
+                speedRadar.TriggerRadar(vehicle);
+                string measurement = speedRadar.GetLastReading();
+                Console.WriteLine(WriteMessage($"Triggered radar. Result: {measurement}"));
+
+                if (vehicle.GetSpeed() > 50.0f)
+                {
+                    comisaria.Alerta(vehicle.GetPlate());
+                }
+            }
             else
             {
-                Console.WriteLine(WriteMessage("was not patrolling."));
+                Console.WriteLine(WriteMessage($"is not patrolling."));
             }
         }
 
-        // Perseguir un vehículo cuando se detecta o se recibe una notificación
         public void PerseguirVehiculo(string plate)
         {
             if (isPatrolling)
@@ -72,20 +73,5 @@
                 Console.WriteLine(WriteMessage($"is now pursuing vehicle with plate {plate}."));
             }
         }
-
-        public bool IsPatrolling()
-        {
-            return isPatrolling;
-        }
-
-        public void PrintRadarHistory()
-        {
-            Console.WriteLine(WriteMessage("Report radar speed history:"));
-            foreach (float speed in speedRadar.SpeedHistory)
-            {
-                Console.WriteLine(speed);
-            }
-        }
     }
 }
-
