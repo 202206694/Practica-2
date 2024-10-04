@@ -28,7 +28,7 @@
             }
             else
             {
-                Console.WriteLine($"Ciudad: Taxi with plate {plate} not found.");
+                Console.WriteLine($"Ciudad: Taxi  not found.");
             }
         }
     }
