@@ -13,7 +13,13 @@
             speed = 0f;
         }
 
-        //Override ToString() method with class information
+        public Vehicle(string typeOfVehicle)
+        {
+            this.typeOfVehicle = typeOfVehicle;
+            this.plate = "No Plate";
+            speed = 0f;
+        }
+
         public override string ToString()
         {
             return $"{GetTypeOfVehicle()} with plate {GetPlate()}";
@@ -29,7 +35,6 @@
             return plate;
         }
 
-
         public float GetSpeed()
         {
             return speed;
@@ -40,7 +45,6 @@
             this.speed = speed;
         }
 
-        //Implment interface with Vechicle message structure
         public string WriteMessage(string message)
         {
             return $"{this}: {message}";
