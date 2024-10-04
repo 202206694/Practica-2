@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "e8/1GNYB8YYgur9VIaHRWcixzjWUULmWjHZtikpM9kJT0/fP64jsT6MnmzgWqPTMxdr1pVdzY3VfrFro6T4B3w==",
+  "success": true,
+  "projectFilePath": "/Users/patriciadiaz/Projects/Practica 2/Practica 2/Practica 2.csproj",
+  "expectedPackageFiles": [
+    "/Users/patriciadiaz/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
+    "/Users/patriciadiaz/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.31/microsoft.netcore.app.host.osx-arm64.6.0.31.nupkg.sha512",
+    "/Users/patriciadiaz/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512"
+  ],
+  "logs": []
+}
