@@ -11,11 +11,10 @@
             taxis = new List<Taxi>();
         }
 
-        // Registro de taxis
         public void RegistrarTaxi(Taxi taxi)
         {
             taxis.Add(taxi);
-            Console.WriteLine($"Ciudad: Taxi con matrícula {taxi.GetPlate()} registrado.");
+            Console.WriteLine($"Ciudad: Taxi with plate {taxi.GetPlate()} has been registered.");
         }
 
         // Eliminar taxis
@@ -25,11 +24,11 @@
             if (taxi != null)
             {
                 taxis.Remove(taxi);
-                Console.WriteLine($"Ciudad: Taxi con matrícula {plate} eliminado.");
+                Console.WriteLine($"Ciudad: Taxi with plate {plate} has been eliminated.");
             }
             else
             {
-                Console.WriteLine($"Ciudad: Taxi con matrícula {plate} no encontrado.");
+                Console.WriteLine($"Ciudad: Taxi with plate {plate} not found.");
             }
         }
     }

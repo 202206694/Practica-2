@@ -12,13 +12,13 @@
         public void RegistrarCochePolicia(PoliceCar policeCar)
         {
             policeCars.Add(policeCar);
-            Console.WriteLine($"Comisaria: Coche de policía con matrícula {policeCar.GetPlate()} registrado.");
+            Console.WriteLine($"Comisaria: PoliceCar with plate {policeCar.GetPlate()} has been registered.");
         }
 
         // Notifica una alerta a todos los coches de policía
         public void Alerta(string infractorPlate)
         {
-            Console.WriteLine($"Alerta: Vehículo con matrícula {infractorPlate} excedió la velocidad legal.");
+            Console.WriteLine($"Alerta: vehicule eith plate {infractorPlate} went over the leagl speed limit.");
             foreach (var policeCar in policeCars)
             {
                 if (policeCar.IsPatrolling())
